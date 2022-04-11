@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Timeular
+Comment=Effortless time tracking to help you lead a more rewarding work-life.
+Exec=/opt/Timeular.AppImage
+Icon=~/.local/share/applications/timeular.png
+Terminal=false
+Type=Application
+Categories=Utility;Development;
