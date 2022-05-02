@@ -60,6 +60,7 @@ if $bupdate; then
     printf "\n\n\033[1m\033[42mAdding the bennetrr apt repository\033[0m\n"
     curl -s --compressed "https://bennetrr.github.io/packages/apt/KEY.gpg" | sudo apt-key add -
     echo "deb https://bennetrr.github.io/packages/apt ./" | sudo tee /etc/apt/sources.list.d/bennetrr.list >/dev/null
+    sudo apt update
     
     printf "\n\n\033[1m\033[42mInstalling bupdate\033[0m\n"
     sudo apt install -y bupdate
