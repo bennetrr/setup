@@ -30,6 +30,7 @@ The installation of applications with an * is required and cannot be disabled.
 
 ### CLI
 - git*
+- htop*
 - [bupdate](https://github.com/bennetrr/bupdate)
 - zsh
   - [OhMyZSH!](https://ohmyz.sh/)
