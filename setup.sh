@@ -51,9 +51,9 @@ os_distributor=${os_distributor,,}
 os_version=$(lsb_release -rs)
 os_codename=$(lsb_release -cs)
 
-# Install git
-printf "\n\n\033[1m\033[42mInstalling git\033[0m\n"
-sudo apt install -y git
+# Install important cli tools
+printf "\n\n\033[1m\033[42mInstalling important CLI tools\033[0m\n"
+sudo apt install -y git htop
 
 # Install and run bupdate
 if $bupdate; then
