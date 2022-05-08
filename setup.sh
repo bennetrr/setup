@@ -165,6 +165,7 @@ if $docker; then
         # Installation with apt is not supported on raspbian
         printf "\n\n\033[1m\033[42mInstalling docker with the script\033[0m\n"
         curl -fsSL -o- "https://get.docker.com" | sudo bash
+        sudo usermod -aG docker "$USER"
     else
         printf "\n\n\033[1m\033[42mInstalling docker with apt\033[0m\n"
         sudo apt install -y ca-certificates gnupg
@@ -173,10 +174,15 @@ if $docker; then
         echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/$os_distributor $os_codename stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
         sudo apt update
-        sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        if $graphical; then
+            wget -O docker-desktop.deb "https://desktop-stage.docker.com/linux/main/amd64/78933/docker-desktop-4.8.0-amd64.deb"
+            sudo apt install -y ./docker-desktop.deb
+        else
+            sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+            sudo usermod -aG docker "$USER"
+        fi
     fi
 
-    sudo usermod -aG docker "$USER"
 fi
 
 # Configure git
