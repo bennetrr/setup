@@ -199,6 +199,9 @@ if $git; then
 
     sudo apt update
     sudo apt install -y gh
+
+    # Configure git
+    git config --global core.autocrlf input
 fi
 
 # Install SSH Server
