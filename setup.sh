@@ -100,12 +100,14 @@ if $node; then
     curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh" | bash
     
     printf "\n\n\033[1m\033[42mWriting loading code into .zshrc\033[0m\n"
+    #shellcheck disable=SC2016
     echo '
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc
     
     printf "\n\n\033[1m\033[42mLoading nvm\033[0m\n"
+    #shellcheck disable=SC2155
     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
@@ -228,7 +230,7 @@ if $graphical; then
 
         tar -C "$toolbox_temp_dir" -xf toolbox.tar.gz
         rm -v ./toolbox.tar.gz
-
+        #shellcheck disable=SC2211
         "$toolbox_temp_dir"/*/jetbrains-toolbox
         rm -vdr "$toolbox_temp_dir"
     fi

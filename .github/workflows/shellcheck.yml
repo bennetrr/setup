@@ -1,0 +1,16 @@
+name: ShellCheck code linting
+
+on:
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run ShellCheck
+        uses: azohra/shell-linter@v0.6.0

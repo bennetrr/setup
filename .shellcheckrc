@@ -1,0 +1,3 @@
+disable=SC2059 # Variables in printf
+disable=SC1091 # Files not known to shellcheck
+disable=SC1090 # Non-constant files
