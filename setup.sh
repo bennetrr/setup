@@ -1,6 +1,7 @@
 #! /bin/bash
 
 # Set the default values for the arguments
+testing=false
 bupdate=true
 zsh=true
 node=true
@@ -21,6 +22,7 @@ sshd=true
 # Get the arguments
 for arg in "$@"; do
     case "${arg}" in
+    "--testing") testing=true;;
     "--no-bupdate") bupdate=false ;;
     "--no-zsh") zsh=false ;;
     "--no-node") node=false ;;
@@ -40,6 +42,9 @@ for arg in "$@"; do
     *) printf "\033[1m\033[31mWrong argument: $arg\033[0m\n" && exit ;;
     esac
 done
+
+# Exit on error if testing is enabled
+if $testing; then set -e; fi
 
 # Get root permissions
 printf "\n\n\033[1m\033[43mYou need to enter your password to allow root actions\033[0m\n"
