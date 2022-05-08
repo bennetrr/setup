@@ -282,7 +282,7 @@ if $graphical; then
 
     # Install Timeular and apply a fix for the icons
     if $timeular; then
-        cp update-timeular.sh /usr/local/bin
+        sudo cp update-timeular.sh /usr/local/bin
         update-timeular.sh
         mkdir --parents ~/.local/share/applications
         cp -v timeular.png timeular.desktop ~/.local/applications
