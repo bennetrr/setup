@@ -230,7 +230,7 @@ if $graphical; then
 
         tar -C "$toolbox_temp_dir" -xf toolbox.tar.gz
         rm -v ./toolbox.tar.gz
-        ##shellcheck disable=SC2211
+        #shellcheck disable=SC2211
         "$toolbox_temp_dir"/*/jetbrains-toolbox
         rm -vdr "$toolbox_temp_dir"
     fi
