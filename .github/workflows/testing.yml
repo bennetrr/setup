@@ -15,4 +15,4 @@ jobs:
       - name: Test the script
         run: |
           chmod a+x setup.sh
-          ./setup.sh --graphical
+          ./setup.sh --graphical --testing

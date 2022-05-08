@@ -1,6 +1,7 @@
 #! /bin/bash
 
 # Set the default values for the arguments
+testing=false
 bupdate=true
 zsh=true
 node=true
@@ -21,6 +22,7 @@ sshd=true
 # Get the arguments
 for arg in "$@"; do
     case "${arg}" in
+    "--testing") testing=true;;
     "--no-bupdate") bupdate=false ;;
     "--no-zsh") zsh=false ;;
     "--no-node") node=false ;;
@@ -40,6 +42,9 @@ for arg in "$@"; do
     *) printf "\033[1m\033[31mWrong argument: $arg\033[0m\n" && exit ;;
     esac
 done
+
+# Exit on error if testing is enabled
+if $testing; then set -e; fi
 
 # Get root permissions
 printf "\n\n\033[1m\033[43mYou need to enter your password to allow root actions\033[0m\n"
@@ -165,6 +170,7 @@ if $docker; then
         # Installation with apt is not supported on raspbian
         printf "\n\n\033[1m\033[42mInstalling docker with the script\033[0m\n"
         curl -fsSL -o- "https://get.docker.com" | sudo bash
+        sudo usermod -aG docker "$USER"
     else
         printf "\n\n\033[1m\033[42mInstalling docker with apt\033[0m\n"
         sudo apt install -y ca-certificates gnupg
@@ -173,10 +179,15 @@ if $docker; then
         echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/$os_distributor $os_codename stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
         sudo apt update
-        sudo apt install -y docker-ce docker-ce-cli containerd.io
+        if $graphical; then
+            wget -O docker-desktop.deb "https://desktop-stage.docker.com/linux/main/amd64/78933/docker-desktop-4.8.0-amd64.deb"
+            sudo apt install -y ./docker-desktop.deb
+        else
+            sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+            sudo usermod -aG docker "$USER"
+        fi
     fi
 
-    sudo usermod -aG docker "$USER"
 fi
 
 # Configure git
@@ -188,6 +199,9 @@ if $git; then
 
     sudo apt update
     sudo apt install -y gh
+
+    # Configure git
+    git config --global core.autocrlf input
 fi
 
 # Install SSH Server
@@ -268,7 +282,7 @@ if $graphical; then
 
     # Install Timeular and apply a fix for the icons
     if $timeular; then
-        cp update-timeular.sh /usr/local/bin
+        sudo cp update-timeular.sh /usr/local/bin
         update-timeular.sh
         mkdir --parents ~/.local/share/applications
         cp -v timeular.png timeular.desktop ~/.local/applications
