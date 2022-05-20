@@ -123,17 +123,7 @@ if $dotnet; then
         curl -o- "https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh" | bash
     else
         printf "\n\n\033[1m\033[42mInstalling .NET with apt\033[0m\n"
-
-        # .NET is not included in the Ubuntu 21.10 sources yet, so we have to use the sources for Ubuntu 21.04
-        # https://docs.microsoft.com/de-de/dotnet/core/install/linux-ubuntu#2110-
-        if [[ "${os_version}" == "21.10" ]]; then
-            echo "Version 21.10 of Ubuntu found, substituting version 21.04"
-            dotnet_os_version="21.04"
-        else
-            dotnet_os_version="$os_version"
-        fi
-
-        wget -O dotnet.deb "https://packages.microsoft.com/config/$os_distributor/$dotnet_os_version/packages-microsoft-prod.deb"
+        wget -O dotnet.deb "https://packages.microsoft.com/config/$os_distributor/$os_version/packages-microsoft-prod.deb"
         sudo dpkg -i dotnet.deb
         rm -v dotnet.deb
 
