@@ -280,7 +280,7 @@ if $graphical; then
         sudo cp update-timeular.sh /usr/local/bin
         update-timeular.sh
         mkdir --parents ~/.local/share/applications
-        cp -v timeular.png timeular.desktop ~/.local/applications
+        cp -v timeular.png timeular.desktop ~/.local/share/applications
     fi
 
     printf "\n\n"
