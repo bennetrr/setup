@@ -111,6 +111,6 @@ DOTNET_CLI_TELEMETRY_OPTOUT=true
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias ls='ls -Alh --color=always'
+alias ls='ls -Alhv --color=always'
 alias c='clear'
 
