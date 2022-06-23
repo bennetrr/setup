@@ -1,36 +1,40 @@
 # bennetrr setup script
+
 This script installs the software I need for developing.
 
 ## Usage
-All you need to do is download / clone this repository, `cd` into the folder and run the script with `./setup.sh`. You may have to enter passwords, so watch out for the yellow text.
 
-You can tell the script wether to install / not install some software with the following flags: 
+All you need to do is to download / clone this repository, `cd` into the folder and run the script with `bash setup.sh`. You may have to enter passwords, so watch out for the yellow text.
 
-| Flag | Function |
-|------|----------|
-| `--no-bupdate` | Don't install bupdate |
-| `--no-zsh` | Don't install zsh |
-| `--no-node`  | Don't install node.js|
-| `--no-dotnet` | Don't install .Net SDK |
-| `--no-python` | Don't install python3 pip |
-| `--no-java` | Don't install Java |
-| `--no-docker` | Don't install docker |
-| `--no-git` | Don't install Github CLI and Github Desktop (GHD only if `--graphical` is issued) |
-| `--graphical` | Install graphical applications |
-| `--no-teams` | Don't install Microsoft Teams |
-| `--no-jetbrain` | Don't install the Jetbrains Toolbox |
-| `--no-imagers` | Don't install Balena Etcher and the Raspberry Pi Imager |
-| `--no-minecraft` | Don't install MultiMC |
-| `--no-timeular` | Don't install Timeular |
-| `--no-virtualbox` | Don't install VirtualBox |
-| `--no-sshd` | Don't install the OpenSSH Server |
+You can tell the script wether to install / not install some software with the following flags:
+
+| Flag              | Function                                                                          |
+| ----------------- | --------------------------------------------------------------------------------- |
+| `--no-bupdate`    | Don't install bupdate                                                             |
+| `--no-zsh`        | Don't install zsh                                                                 |
+| `--no-node`       | Don't install node.js                                                             |
+| `--no-dotnet`     | Don't install .Net SDK                                                            |
+| `--no-python`     | Don't install python3 pip                                                         |
+| `--no-java`       | Don't install Java                                                                |
+| `--no-docker`     | Don't install docker                                                              |
+| `--no-git`        | Don't install Github CLI and Github Desktop (GHD only if `--graphical` is issued) |
+| `--graphical`     | Install GUI applications                                                          |
+| `--no-teams`      | Don't install Microsoft Teams                                                     |
+| `--no-jetbrain`   | Don't install the Jetbrains Toolbox                                               |
+| `--no-imagers`    | Don't install Balena Etcher and the Raspberry Pi Imager                           |
+| `--no-minecraft`  | Don't install MultiMC                                                             |
+| `--no-timeular`   | Don't install Timeular and an update script                                       |
+| `--no-virtualbox` | Don't install VirtualBox                                                          |
+| `--no-sshd`       | Don't install the OpenSSH Server                                                  |
 
 ## Applications
-The installation of applications with an * is required and cannot be disabled.
+
+The installation of applications with an \* is required and cannot be disabled.
 
 ### CLI
-- git*
-- htop*
+
+- git\*
+- htop\*
 - [bupdate](https://github.com/bennetrr/bupdate)
 - zsh
   - [OhMyZSH!](https://ohmyz.sh/)
@@ -40,6 +44,7 @@ The installation of applications with an * is required and cannot be disabled.
 - [Github CLI](https://cli.github.com/)
 
 ### Languages & Environments
+
 - Node.js (LTS Version)
   - [nvm](https://github.com/nvm-sh/nvm)
 - Microsoft .NET SDK
@@ -50,16 +55,17 @@ The installation of applications with an * is required and cannot be disabled.
 - OpenSSH Server
 
 ### Graphical
-- Visual Studio Code*
+
+- Visual Studio Code\*
   - German and English Hunspell languages for VS Code
-- [Déjà Dup](https://wiki.gnome.org/Apps/DejaDup/Details)*
-- GIMP*, [Nomacs](https://nomacs.org/)*, [Inkscape](https://inkscape.org)*
-- GParted*
-- [KeePass 2](https://keepass.info/)*
-- LibreOffice*
-- Gnome System Monitor*
-- Gnome Calc*
-- VLC Media Player*
+- [Déjà Dup](https://wiki.gnome.org/Apps/DejaDup/Details)\*
+- GIMP*, [Nomacs](https://nomacs.org/)*, [Inkscape](https://inkscape.org)\*
+- GParted\*
+- [KeePass 2](https://keepass.info/)\*
+- LibreOffice\*
+- Gnome System Monitor\*
+- Gnome Calc\*
+- VLC Media Player\*
 - [Microsoft Teams](https://www.microsoft.com/de-de/microsoft-teams/group-chat-software)
 - [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)
 - [Balena Etcher](https://www.balena.io/etcher/)
@@ -70,8 +76,8 @@ The installation of applications with an * is required and cannot be disabled.
   - Fix the wrong Icons in the system tray
 - VirtualBox
 
-
 # Steps after Setup
+
 - Reboot your system to apply all changes
 - Adjust the `~/.zshrc` file for your needs
 - Run `gh auth login` to log in to Github CLI

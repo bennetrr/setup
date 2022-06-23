@@ -3,7 +3,7 @@
 Name=Timeular
 Comment=Effortless time tracking to help you lead a more rewarding work-life.
 Exec=/opt/Timeular.AppImage
-Icon=~/.local/share/applications/timeular.png
+Icon=/usr/share/pixmaps/timeular.png
 Terminal=false
 Type=Application
 Categories=Utility;Development;

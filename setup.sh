@@ -267,10 +267,14 @@ if $graphical; then
 
     # Install Timeular and apply a fix for the icons
     if $timeular; then
-        sudo cp update-timeular.sh /usr/local/bin
-        update-timeular.sh
-        mkdir --parents ~/.local/share/applications
-        cp -v timeular.png timeular.desktop ~/.local/share/applications
+        printf "\n\n\033[1m\033[42mInstalling update-timeular tool\033[0m\n"
+        sudo cp -v update-timeular.sh /usr/local/bin/update-timeular
+        sudo cp -v linux_connected.png linux_not_connected.png timeular.png /usr/share/pixmaps/
+        sudo chmod -v +x /usr/local/bin/update-timeular
+
+        update-timeular
+        mkdir -v --parents ~/.local/share/applications
+        cp -v timeular.desktop ~/.local/share/applications
     fi
 
     printf "\n\n"
