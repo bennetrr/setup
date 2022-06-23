@@ -55,7 +55,7 @@ os_codename=$(lsb_release -cs)
 printf "\n\n\033[1m\033[42mInstalling important CLI tools\033[0m\n"
 sudo apt install -y git htop
 
-# Install and run bupdate
+# Install bupdate
 if $bupdate; then
     printf "\n\n\033[1m\033[42mAdding the bennetrr apt repository\033[0m\n"
     curl -s --compressed "https://bennetrr.github.io/packages/apt/KEY.gpg" | gpg --dearmor | sudo tee /usr/share/keyrings/bennetrr-archive-keyring.gpg >/dev/null
@@ -64,7 +64,11 @@ if $bupdate; then
     
     printf "\n\n\033[1m\033[42mInstalling bupdate\033[0m\n"
     sudo apt install -y bupdate
-    
+fi
+
+
+# Install updates
+if [ "$(command -v bupdate)" ]; then
     printf "\n\n\033[1m\033[42mInstalling updates with bupdate\033[0m\n"
     printf "snap refresh\npkill bupdate\n" | sudo tee /etc/bupdate/custom.sh >/dev/null
     bupdate
@@ -210,7 +214,7 @@ if $graphical; then
 
     printf "\n\n\033[1m\033[42mInstalling important tools\033[0m\n"
     # Install important tools like backup software, media players, etc.
-    sudo apt install -y deja-dup gimp gparted inkscape keepass2 libreoffice nomacs gnome-system-monitor gnome-calculator vlc
+    sudo apt install -y deja-dup gimp gparted inkscape keepass2 libreoffice nomacs gnome-system-monitor gnome-calculator vlc flameshot
 
     # Install Microsoft Teams
     if $teams; then
