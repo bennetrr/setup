@@ -86,33 +86,18 @@ else
     sudo apt autoremove -y
 fi
 
-function zsh_config () {
-    printf "\n\n\033[1m\033[42mInstalling OhMyZSH and config files\033[0m\n"
-    curl -fsSL -o- "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh" | bash
-    cp -v .zshrc .p10k.zsh ~
-
-    printf "\n\n\033[1m\033[42mInstalling zsh plugins\033[0m\n"
-    git clone --depth=1 "https://github.com/romkatv/powerlevel10k.git" ~/.oh-my-zsh/custom/themes/powerlevel10k
-    git clone "https://github.com/zsh-users/zsh-autosuggestions" ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-    git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git" ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-
-    printf "\n\n\033[1m\033[43mYou need to enter your password to set the default shell to zsh\033[0m\n"
-    chsh -s /bin/zsh
-}
-
-
 # Install zsh, OhMyZSH and plugins
 if $zsh; then
     printf "\n\n\033[1m\033[42mInstalling zsh\033[0m\n"
     sudo apt install -y zsh
-    zsh_config
+    ./zsh-setup.sh
 else
     zsh_root=false
 fi
 
 if $zsh_root; then
     printf "\n\n\033[1m\033[42mInstalling zsh for the root user\033[0m\n"
-    sudo -Hi bash -c "$(declare -f zsh_config); zsh_config"
+    sudo -Hi ./zsh-setup.sh
 fi
 
 # Install nvm and node.js
