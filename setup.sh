@@ -3,6 +3,7 @@
 # Set the default values for the arguments
 bupdate=true
 zsh=true
+zsh_root=false
 node=true
 dotnet=true
 python=true
@@ -23,6 +24,7 @@ for arg in "$@"; do
     case "${arg}" in
     "--no-bupdate") bupdate=false ;;
     "--no-zsh") zsh=false ;;
+    "--zsh-root") zsh_root=true ;;
     "--no-node") node=false ;;
     "--no-dotnet") dotnet=false ;;
     "--no-python") python=false ;;
@@ -84,11 +86,7 @@ else
     sudo apt autoremove -y
 fi
 
-# Install zsh, OhMyZSH and plugins
-if $zsh; then
-    printf "\n\n\033[1m\033[42mInstalling zsh\033[0m\n"
-    sudo apt install -y zsh
-
+function zsh_config () {
     printf "\n\n\033[1m\033[42mInstalling OhMyZSH and config files\033[0m\n"
     curl -fsSL -o- "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh" | bash
     cp -v .zshrc .p10k.zsh ~
@@ -100,6 +98,19 @@ if $zsh; then
 
     printf "\n\n\033[1m\033[43mYou need to enter your password to set the default shell to zsh\033[0m\n"
     chsh -s /bin/zsh
+}
+
+
+# Install zsh, OhMyZSH and plugins
+if $zsh; then
+    printf "\n\n\033[1m\033[42mInstalling zsh\033[0m\n"
+    sudo apt install -y zsh
+    zsh_config
+fi
+
+if $zsh_root; then
+    printf "\n\n\033[1m\033[42mInstalling zsh for the root user\033[0m\n"
+    sudo -Hi bash -c "$(declare -f zsh_config); zsh_config"
 fi
 
 # Install nvm and node.js

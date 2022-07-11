@@ -12,6 +12,7 @@ You can tell the script wether to install / not install some software with the f
 | ----------------- | --------------------------------------------------------------------------------- |
 | `--no-bupdate`    | Don't install bupdate                                                             |
 | `--no-zsh`        | Don't install zsh                                                                 |
+| `--zsh-root`      | Install zsh for the root user                                                     |
 | `--no-node`       | Don't install node.js                                                             |
 | `--no-dotnet`     | Don't install .Net SDK                                                            |
 | `--no-python`     | Don't install python3 pip                                                         |
