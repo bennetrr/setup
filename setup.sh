@@ -74,7 +74,7 @@ if [ "$(command -v bupdate)" ]; then
     printf "\n\n\033[1m\033[42mInstalling updates with bupdate\033[0m\n"
 
     sudo cp -v /etc/bupdate/custom.sh /etc/bupdate/custom.sh.bak
-    printf "snap refresh\npkill bupdate\n" | sudo tee /etc/bupdate/custom.sh >/dev/null
+    printf "pkill bupdate\n" | sudo tee -a /etc/bupdate/custom.sh >/dev/null
 
     bupdate
 
