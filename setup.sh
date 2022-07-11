@@ -90,14 +90,14 @@ fi
 if $zsh; then
     printf "\n\n\033[1m\033[42mInstalling zsh\033[0m\n"
     sudo apt install -y zsh
-    ./zsh-setup.sh
+    bash zsh-setup.sh
 else
     zsh_root=false
 fi
 
 if $zsh_root; then
     printf "\n\n\033[1m\033[42mInstalling zsh for the root user\033[0m\n"
-    sudo -Hi ./zsh-setup.sh
+    sudo -H bash zsh-setup.sh
 fi
 
 # Install nvm and node.js
