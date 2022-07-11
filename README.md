@@ -61,6 +61,7 @@ The installation of applications with an \* is required and cannot be disabled.
   - German and English Hunspell languages for VS Code
 - [Déjà Dup](https://wiki.gnome.org/Apps/DejaDup/Details)\*
 - GIMP*, [Nomacs](https://nomacs.org/)*, [Inkscape](https://inkscape.org)\*
+- [Flameshot](https://flameshot.org/)\* 
 - GParted\*
 - [KeePass 2](https://keepass.info/)\*
 - LibreOffice\*
