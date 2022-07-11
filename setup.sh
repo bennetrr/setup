@@ -262,9 +262,13 @@ if $graphical; then
 
         if [[ "${os_distributor}" != "raspbian" ]]; then
             printf "\n\n\033[1m\033[42mInstalling RPi Imager\033[0m\n"
-            wget -O imager.deb "https://downloads.raspberrypi.org/imager/imager_latest_amd64.deb"
-            sudo apt install -y ./imager.deb
-            rm -v imager.deb
+            if [[ "$os_version" == "22.04" ]]; then
+                sudo apt install -y rpi-imager
+            else
+                wget -O imager.deb "https://downloads.raspberrypi.org/imager/imager_latest_amd64.deb"
+                sudo apt install -y ./imager.deb
+                rm -v imager.deb
+            fi
         fi
     fi
 
