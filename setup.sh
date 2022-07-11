@@ -106,6 +106,8 @@ if $zsh; then
     printf "\n\n\033[1m\033[42mInstalling zsh\033[0m\n"
     sudo apt install -y zsh
     zsh_config
+else
+    zsh_root=false
 fi
 
 if $zsh_root; then
