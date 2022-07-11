@@ -70,9 +70,13 @@ fi
 # Install updates
 if [ "$(command -v bupdate)" ]; then
     printf "\n\n\033[1m\033[42mInstalling updates with bupdate\033[0m\n"
+
+    sudo cp -v /etc/bupdate/custom.sh /etc/bupdate/custom.sh.bak
     printf "snap refresh\npkill bupdate\n" | sudo tee /etc/bupdate/custom.sh >/dev/null
+
     bupdate
-    echo "snap refresh" | sudo tee /etc/bupdate/custom.sh >/dev/null
+
+    sudo mv -vf /etc/bupdate/custom.sh.bak /etc/bupdate/custom.sh
 else
     printf "\n\n\033[1m\033[42mInstalling updates without bupdate\033[0m\n"
     sudo apt update
